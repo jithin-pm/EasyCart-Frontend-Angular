@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div *ngIf="wishlistItems.length == 0" class="d-flex justify-content-center m-5 flex-column align-items-center">
+    <img src="https://www.lifestone.in/assets/front/images/icons/empty-wishlist.svg" alt="">
+    <h5 class="text-danger">Your wishlist is empty</h5>
+</div>
+
+<div *ngIf="wishlistItems.length > 0" class="d-flex justify-content-center mt-5 flex-column align-items-center">
+    <h5>your wishlist</h5>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of wishlistItems">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="product.image" style="height: 150px;" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title}}</h5>
+                            <!-- Product price-->
+                            {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="d-flex justify-content-between m-3 ">
+                        <i class="btn btn-outline-danger fa-solid fa-trash mt-auto" (click)="deleteWishlistItems(product._id)"></i>
+                        <i class="btn btn-outline-success fa-solid fa-cart-shopping mt-auto" (click)="addToCart(product)" ></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

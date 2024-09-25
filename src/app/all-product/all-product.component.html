@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/799c521a141bb4c7.png?q=20" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/2152c9d0afe3352d.jpg?q=20" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/614c92ccb25152fe.jpg?q=20" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5"  *ngFor="let product of allProducts">
+                <div class="card h-100" >
+                    <!-- Product image-->
+                    <img class="card-img-top " [src]="product.image" alt="..." style="height: 150px;" routerLink="view-product/{{product._id}}" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title}}</h5>
+                            <!-- Product price-->
+                            {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="d-flex justify-content-between m-3 ">
+                        <i (click)="addToWishlist(product)" class="btn btn-outline-danger fa-solid fa-heart mt-auto"></i>
+                        <i (click)="addToCart(product)" class="btn btn-outline-success fa-solid fa-cart-shopping mt-auto"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
